@@ -295,7 +295,7 @@ func sourceAddrForPort(port int, dest *net.TCPAddr) *net.TCPAddr {
 	return getSourceAddr(addr)
 }
 
-var dnsNameAllowedChars = regexp.MustCompile(`[^-a-z0-9]+`)
+var dnsNameAllowedChars = regexp.MustCompile(`[^-a-z0-9.]+`)
 var dnsNameHyphenStrings = regexp.MustCompile(`-{2,}`)
 
 func dnsNameFromContainerName(containerName string) string {
