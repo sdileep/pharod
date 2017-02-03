@@ -236,8 +236,7 @@ func succIP(ip net.IP) net.IP {
 	if ip.To4() == nil {
 		panic("only IPv4 supported at the moment")
 	}
-	ipInt := (uint32(ip[12]) << 24) | (uint32(ip[13]) << 16) |
-		(uint32(ip[14]) << 8) | uint32(ip[15])
+	ipInt := ipToInt(ip)
 	ipInt += 1
 	return net.IP([]byte{
 		byte(ipInt >> 24),
@@ -245,6 +244,11 @@ func succIP(ip net.IP) net.IP {
 		byte(ipInt >> 8),
 		byte(ipInt),
 	})
+}
+
+func ipToInt(ip net.IP) uint32 {
+	return (uint32(ip[12]) << 24) | (uint32(ip[13]) << 16) |
+		(uint32(ip[14]) << 8) | uint32(ip[15])
 }
 
 func sourceAddrForPort(port int, dest *net.TCPAddr) *net.TCPAddr {
@@ -258,8 +262,13 @@ func sourceAddrForPort(port int, dest *net.TCPAddr) *net.TCPAddr {
 	}
 
 	var lastAddr string
+	var lastAddrIP net.IP
 	for addr, ls := range sourceAddrs {
-		lastAddr = addr
+		addrIP := net.ParseIP(addr)
+		if lastAddrIP == nil || ipToInt(addrIP) > ipToInt(lastAddrIP) {
+			lastAddr = addr
+			lastAddrIP = addrIP
+		}
 		if _, ok := ls[port]; !ok {
 			ls[port] = dest
 			return getSourceAddr(addr)
