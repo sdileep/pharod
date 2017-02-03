@@ -1,0 +1,10 @@
+package: github.com/d3v1an7/pharod
+import:
+- package: github.com/docker/docker
+  version: v1.13.0
+- package: github.com/fsouza/go-dockerclient
+  version: 94aeff6a741494ddf6e5e66b2b0881828468b1df
+- package: github.com/miekg/dns
+  version: 99f84ae56e75126dd77e5de4fae2ea034a468ca1
+- package: github.com/sevlyar/go-daemon
+  version: 8577c7ddef908e104dae56c9e46f0956cb33c844
