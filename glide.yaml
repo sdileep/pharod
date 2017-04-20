@@ -1,4 +1,4 @@
-package: github.com/d3v1an7/pharod
+package: github.com/ffxblue/pharod
 import:
 - package: github.com/docker/docker
   version: v1.13.0
