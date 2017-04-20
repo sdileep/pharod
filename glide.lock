@@ -1,5 +1,5 @@
-hash: cf2bebf4ebd0897077b0cbf4914b92087a32b2913d7a27725db0516b3637ebf0
-updated: 2017-04-20T11:27:18.554136178+10:00
+hash: e39e735952089f40dfa257461fae9b133957419ce65a61d5ebe62c6739a284f1
+updated: 2017-02-01T19:32:23.004903356+11:00
 imports:
 - name: github.com/Azure/go-ansiterm
   version: fa152c58bc15761d0200cb75fe958b89a9d4888e
@@ -34,7 +34,7 @@ imports:
   - pkg/term
   - pkg/term/windows
 - name: github.com/docker/go-connections
-  version: e15c02316c12de00874640cd76311849de2aeed5
+  version: 9670439d95da2651d9dfc7acc5d2ed92d3f25ee6
   subpackages:
   - nat
 - name: github.com/docker/go-units
@@ -42,30 +42,29 @@ imports:
 - name: github.com/fsouza/go-dockerclient
   version: 94aeff6a741494ddf6e5e66b2b0881828468b1df
 - name: github.com/hashicorp/go-cleanhttp
-  version: 3573b8b52aa7b37b9358d966a898feb387f62437
+  version: ad28ea4487f05916463e2423a55166280e8254b5
 - name: github.com/kardianos/osext
-  version: 9d302b58e975387d0b4d9be876622c86cefe64be
+  version: c2c54e542fb797ad986b31721e1baedf214ca413
 - name: github.com/Microsoft/go-winio
   version: fff283ad5116362ca252298cfc9b95828956d85d
 - name: github.com/miekg/dns
   version: 99f84ae56e75126dd77e5de4fae2ea034a468ca1
 - name: github.com/opencontainers/runc
-  version: 9f1ef73ef9565c1ba592d402b7a2d127feba6ef3
+  version: 510879e31fd5e7b8f2588ed09471fe62a368f24e
   subpackages:
   - libcontainer/system
   - libcontainer/user
 - name: github.com/sevlyar/go-daemon
   version: 8577c7ddef908e104dae56c9e46f0956cb33c844
 - name: github.com/Sirupsen/logrus
-  version: 10f801ebc38b33738c9d17d50860f484a0988ff5
+  version: 26709e2714106fb8ad40b773b711ebce25b78914
 - name: golang.org/x/net
-  version: 5602c733f70afc6dcec6766be0d5034d4c4f14de
+  version: 69d4b8aa71caaaa75c3dfc11211d1be495abec7c
   subpackages:
   - context
   - context/ctxhttp
 - name: golang.org/x/sys
-  version: f3918c30c5c2cb527c0b071a27c35120a6c0719a
+  version: 7a6e5648d140666db5d920909e082ca00a87ba2c
   subpackages:
-  - unix
   - windows
 testImports: []
