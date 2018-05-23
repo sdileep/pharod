@@ -1,4 +1,4 @@
-# Pharod
+# Pharod
 
 The problem: you have all kinds of things running in Docker containers on your Mac, and to get at them you have to remember which darned ports you got them listening on. Binding to well-known ports works great until you need to work on two projects at once. You wish you could just address your containers with nice hostnames, on the port that is natural for the service in question.
 
