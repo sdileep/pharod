@@ -14,7 +14,7 @@ fi
 
 sudo mkdir -p /etc/resolver
 
-if [[ $(docker version --format "{{.Server.KernelVersion}}") == *-moby ]]; then
+if [[ $(docker info --format "{{.OperatingSystem}}") == "Docker for Mac" ]]; then
   echo "** Detected Docker for Mac"
 
   DOCKER_HOST_IP="localhost"
