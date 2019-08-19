@@ -14,39 +14,9 @@ fi
 
 sudo mkdir -p /etc/resolver
 
-if [[ $(docker info --format "{{.OperatingSystem}}") == "Docker for Mac" ]]; then
-  echo "** Detected Docker for Mac"
-
-  DOCKER_HOST_IP="localhost"
-  # We have to hard-code this because we have no SSH access to the VM:
-  DOCKER_FIRST_EPHEMERAL_PORT='32768'
-
-elif command -v dlite >/dev/null; then
-  echo "** Docker for Mac not installed or not running; trying Dlite"
-
-  if ! pgrep -qx dlite; then
-    echo "dlite not running, please start it with 'dlite start'"
-    exit 1
-  fi
-
-  echo "** Detected Dlite"
-
-  DOCKER_HOST_IP="local.docker"
-
-  if ! grep -qw "^$DOCKER_HOST_IP " ~/.ssh/known_hosts; then
-    ssh-keyscan -t rsa "$DOCKER_HOST_IP" 2>/dev/null >>~/.ssh/known_hosts
-  fi
-
-  if [[ -z $DOCKER_FIRST_EPHEMERAL_PORT ]]; then
-    # This is what Docker also reads the first port from.
-    DOCKER_FIRST_EPHEMERAL_PORT="$(ssh docker@$DOCKER_HOST_IP cat /proc/sys/net/ipv4/ip_local_port_range | egrep -o '^\d+')"
-  fi
-
-elif [[ $(uname -s) == "Darwin" ]]; then
-  echo "To use Docker in OS X, you need to install Docker for Mac"
-  echo "or Dlite: https://github.com/nlf/dlite"
-  exit 1
-fi
+DOCKER_HOST_IP="localhost"
+# We have to hard-code this because we have no SSH access to the VM:
+DOCKER_FIRST_EPHEMERAL_PORT='32768'
 
 args=""
 
