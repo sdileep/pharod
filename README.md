@@ -36,31 +36,16 @@ At the moment Pharod is built for OS X, particularly in the hostname resolving, 
 
 ## Using
 
-It's currently in our Homebrew repository, so:
-
 ```
-$ brew tap madebymany/custom
-$ brew install pharod
+git clone git@github.com:sdileep/pharod.git
+cd pharod
+make dependencies
+make build
+make links
 ```
 
-Then use `pharod-start` to start it, and `pharodctl ls` to inspect its state. It requires using [dlite](https://github.com/nlf/dlite) or the Docker for Mac beta. Stop it with `pharod-stop`. It doesn't use launchd because it's quite nice to be able to inspect possible errors on startup like this. Might integrate when it's more mature.
+Then use `pharod-start` to start it, and `pharodctl ls` to inspect its state. Stop it with `pharod-stop`. It requires Docker Desktop.
 
-## Building
+## Troubleshooting
 
-**Please note**
-The versions listed in `glide.yaml` are very old, but are the versions of dependencies at the point this project was actively maintained. If you want to run `glide update`, you will need to update the dependency versions and fix things that break.
-
-```
-git clone git@github.com:ffxblue/pharod.git $GOPATH/src/github.com/ffxblue/pharod
-cd $GOPATH/src/github.com/ffxblue/pharod
-goenv install --skip-existing $(cat .go-version)
-glide install
-go build -ldflags -s
-cd pharodctl
-go build -ldflags -s
-cd ..
-ln -sf $PWD/pharod-start /usr/local/bin/pharod-start
-ln -sf $PWD/pharod-stop /usr/local/bin/pharod-stop
-ln -sf $PWD/pharod /usr/local/bin/pharod
-ln -sf $PWD/pharodctl/pharodctl /usr/local/bin/pharodctl
-```
+Sometimes, `pharodctl ls` stops displaying updates. Restarting via `pharod-stop` and `pharod-start` should fix it.
